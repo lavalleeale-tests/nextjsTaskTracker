@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 export async function addTask(email, name, content) {
   let id = uuidv4();
   try {
-    const result = await excuteQuery({
+    await excuteQuery({
       query: `INSERT INTO ${process.env.MYSQL_TABLE} (email, id, name, content, reminder) VALUES(?, ?, ?, ?, ?)`,
       values: [email, id, name, content, true],
     });
@@ -16,6 +16,21 @@ export async function addTask(email, name, content) {
     id,
     name,
     content,
+  };
+}
+export async function deleteTask(id, email) {
+  try {
+    await excuteQuery({
+      query: `DELETE FROM ${process.env.MYSQL_TABLE} where id = ? and email = ?`,
+      values: [id, email],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    id,
+    email,
   };
 }
 

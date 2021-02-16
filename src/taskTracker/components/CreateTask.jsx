@@ -10,6 +10,7 @@ import DateFnsUtils from "@date-io/date-fns";
 export default function CreateNote() {
   const [value, setValue] = useState(new Date());
   async function onSubmit(e) {
+    e.preventDefault();
     const res = await fetch("/api/taskTracker/addTask", {
       method: "POST",
       headers: {
@@ -22,7 +23,6 @@ export default function CreateNote() {
     });
     window.location.reload();
   }
-  let date = new Date();
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Card className={styles.card}>
