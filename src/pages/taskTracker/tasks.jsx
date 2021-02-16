@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
     };
   }
   const res = await fetch(
-    `https://nextjs-task-tracker.lavalleeale.vercel.app/api/taskTracker/getTasks`,
+    `https://alextesting.ninja/api/taskTracker/getTasks`,
     {
       method: "POST",
       body: session.user.email,
