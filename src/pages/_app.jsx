@@ -18,9 +18,12 @@ const themes = {
 };
 export default function MyApp({ Component, pageProps }) {
   return (
-    <html>
+    <html lang="en">
       <Head>
+        <meta name="theme-color" content="#303030" />
         <title>Task Tracker</title>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="description" content="NextJS web app test" />
       </Head>
       <Provider session={pageProps.session}>
         <ThemeProvider theme={themes.darkTheme}>
