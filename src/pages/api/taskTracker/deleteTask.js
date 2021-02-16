@@ -2,7 +2,7 @@
 import { deleteTask } from "../../../taskTracker/lib/tasks";
 import { getSession } from "next-auth/client";
 
-async function hello(req, res) {
+export default async function deleteTasksApi(req, res) {
   switch (req.method) {
     case "DELETE":
       const session = await getSession({ req });
@@ -12,5 +12,3 @@ async function hello(req, res) {
       break;
   }
 }
-
-export default hello;
