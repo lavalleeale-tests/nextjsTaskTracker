@@ -16,10 +16,13 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const res = await fetch(`http://localhost:3000/api/taskTracker/getTasks`, {
-    method: "POST",
-    body: session.user.email,
-  });
+  const res = await fetch(
+    `https://nextjs-task-tracker.lavalleeale.vercel.app/api/taskTracker/getTasks`,
+    {
+      method: "POST",
+      body: session.user.email,
+    }
+  );
   let response = await res.json();
   const data = await response;
 
