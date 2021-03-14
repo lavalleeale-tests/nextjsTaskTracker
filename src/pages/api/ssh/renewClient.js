@@ -5,9 +5,6 @@ export default async function renewClient(req, res) {
   let privKey = sshpk.parsePrivateKey(process.env.SSH_PRIVKEY);
 
   const certificate = sshpk.parseCertificate(req.body.crt, "openssh");
-  if (certificate.isExpired()) {
-    return res.status(401).send("Expired Key");
-  }
   if (!certificate.isSignedByKey(pubKey, privKey)) {
     return res.status(401).send("Incorrect Signing");
   }
